@@ -38,18 +38,30 @@ const io = require("socket.io")(server, {
     },
 });
 
+
 io.on("connection", (socket) => {
     console.log("⚡️ New client connected");
-    socket.emit("connected");
 
-    socket.on("join chat", (room) => socket.join(room));
-    socket.on("new message", (newMessageReceived) => {
-        const chat = newMessageReceived.chat;
+    socket.on("setup", (userData) => {
+        socket.join(userData._id);
+        socket.emit("connected");
+    });
+
+    socket.on("join chat", (room) => {
+        socket.join(room);
+    });
+
+    socket.on("new message", (newMessage) => {
+        const chat = newMessage.chat;
         if (!chat.users) return;
 
-        chat.users.forEach(user => {
-            if (user._id === newMessageReceived.sender._id) return;
-            socket.to(user._id).emit("message received", newMessageReceived);
+        chat.users.forEach((u) => {
+            if (u._id === newMessage.sender._id) return;
+            socket.to(u._id).emit("message received", newMessage);
         });
+    });
+
+    socket.on("disconnect", () => {
+        console.log("Client disconnected");
     });
 });
