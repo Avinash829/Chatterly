@@ -36,7 +36,6 @@ const Login = () => {
                 return;
             }
 
-            // ✅ LOGIN REQUEST
             try {
                 setLoading(true);
 
@@ -58,7 +57,6 @@ const Login = () => {
                     throw new Error(data.message || "Login failed");
                 }
 
-                alert("Login successful!");
                 localStorage.setItem("userInfo", JSON.stringify(data));
                 setUser(data);
                 navigate("/chats");
@@ -69,7 +67,7 @@ const Login = () => {
             }
         }
 
-        // Register
+
         else {
             if (
                 !formData.fullName ||

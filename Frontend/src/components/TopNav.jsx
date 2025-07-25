@@ -75,17 +75,15 @@ const TopNav = () => {
 
     return (
         <>
-            {/* Top Navbar */}
-            <div className="flex md:flex-row md:justify-between md:items-center px-4 py-3 shadow-md bg-white text-orange-400">
-                {/* Logo + Title */}
+            <div className="flex md:flex-row md:justify-between md:items-center px-4 py-3 lg:shadow-md bg-white text-rose-400">
+
                 <div className="flex items-center gap-2">
                     <img src={icon} alt="Logo" className="w-8 h-8" />
                     <h2 className="text-xl font-bold">Chatterly</h2>
                 </div>
 
-                {/* Desktop Search + User */}
                 <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-6 mt-2 md:mt-0 md:flex-nowrap">
-                    {/* Search Input - Desktop Only */}
+
                     <div className="hidden md:block w-64 relative">
                         <input
                             type="text"
@@ -101,7 +99,6 @@ const TopNav = () => {
                             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
                             className="w-full px-3 py-1 text-black border border-orange-400 rounded-md focus:outline-none focus:border-red-500 shadow-sm"
                         />
-                        {/* Search Results */}
                         {searchResult.length > 0 && (
                             <div className="absolute top-full left-0 mt-1 w-full max-h-64 overflow-y-auto bg-white rounded shadow-md border border-gray-200 z-50">
                                 {searchResult[0] === "__NOT_FOUND__" ? (
@@ -125,7 +122,6 @@ const TopNav = () => {
                         )}
                     </div>
 
-                    {/* Username + Dropdown */}
                     <div className="absolute right-4 top-4 md:static md:right-0">
                         <button
                             onClick={() => setDropdownOpen(!dropdownOpen)}
@@ -150,7 +146,6 @@ const TopNav = () => {
                 </div>
             </div>
 
-            {/* Mobile Search Input */}
             <div className="block md:hidden w-full px-4 m-2 bg-white">
                 <input
                     type="text"
@@ -164,7 +159,7 @@ const TopNav = () => {
                         }
                     }}
                     onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                    className="w-full px-3 py-2 text-black border border-orange-400 rounded-md focus:outline-none focus:border-red-500 shadow-sm bg-white"
+                    className="w-full px-3 py-2 text-black border border-orange-400 rounded-md focus:outline-none focus:border-red-500"
                 />
 
                 {searchResult.length > 0 && (
@@ -190,7 +185,6 @@ const TopNav = () => {
                 )}
             </div>
         </>
-
     );
 };
 

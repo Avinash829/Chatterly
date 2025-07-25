@@ -111,7 +111,6 @@ const GroupChatModal = ({ children }) => {
                             className="w-full p-2 mb-3 border border-orange-300 rounded focus:outline-none"
                         />
 
-                        {/* Selected Users */}
                         <div className="flex flex-wrap mb-3 gap-2">
                             {selectedUsers.map((u) => (
                                 <div
@@ -129,7 +128,6 @@ const GroupChatModal = ({ children }) => {
                             ))}
                         </div>
 
-                        {/* Search Results */}
                         {loading ? (
                             <p className="text-sm text-gray-500">Searching...</p>
                         ) : (
@@ -148,7 +146,6 @@ const GroupChatModal = ({ children }) => {
                             </div>
                         )}
 
-                        {/* Action Buttons */}
                         <div className="mt-5 flex justify-end gap-3">
                             <button
                                 onClick={toggleModal}

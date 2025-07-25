@@ -7,7 +7,6 @@ const registerUser = expressAsyncHandler(async (req, res) => {
 
         const { name, email, password } = req.body;
 
-
         if (!name || !email || !password) {
             res.status(400);
             throw new Error("Enter all the Details");
@@ -41,7 +40,6 @@ const registerUser = expressAsyncHandler(async (req, res) => {
         throw error;
     }
 });
-
 
 const authUser = expressAsyncHandler(async (req, res) => {
     const { email, password } = req.body;

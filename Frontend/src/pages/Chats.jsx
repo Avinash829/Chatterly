@@ -13,7 +13,6 @@ const Chats = () => {
 
             {user && (
                 <div className="flex flex-1 overflow-hidden">
-                    {/* ✅ Desktop layout */}
                     <div className="hidden md:flex w-full">
                         <div className="w-1/3 overflow-y-auto border-r">
                             <MyChats />
@@ -23,7 +22,6 @@ const Chats = () => {
                         </div>
                     </div>
 
-                    {/* ✅ Mobile layout */}
                     <div className="flex w-full md:hidden">
                         {!selectedChat ? (
                             <div className="w-full overflow-y-auto">

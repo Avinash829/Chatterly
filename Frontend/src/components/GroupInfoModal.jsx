@@ -84,7 +84,6 @@ const GroupInfoModal = ({ chat, onClose, refresh }) => {
                         </button>
                     )}
                 </div>
-
             </div>
         </div>
     );
