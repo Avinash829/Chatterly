@@ -21,7 +21,7 @@ const SingleChat = ({ message, chat }) => {
                 </span>
             )}
             <div
-                className={`px-4 py-2 max-w-xs ${bubbleClass} ${isOwnMessage ? "bg-orange-400 text-white" : "bg-gray-200 text-black"
+                className={`px-4 py-2 max-w-xs ${bubbleClass} ${isOwnMessage ? "bg-cyan-400 text-white" : "bg-gray-200 text-black"
                     }`}
             >
                 {message.content}

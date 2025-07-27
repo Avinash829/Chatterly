@@ -240,7 +240,7 @@ const Login = () => {
                     type="submit"
                     disabled={loading}
                     className={`w-full py-2 rounded text-white cursor-pointer 
-                        ${loading ? "bg-gray-400" : "bg-blue-600 hover:bg-gradient-to-b from-red-500 via-orange-500 to-red-300"}
+                        ${loading ? "bg-gray-400" : "bg-cyan-600 hover:bg-gradient-to-b from-red-500 via-orange-500 to-red-300"}
                     `}
                 >
                     {loading ? "Processing..." : mode === "login" ? "Login" : "Register"}

@@ -75,8 +75,7 @@ const TopNav = () => {
 
     return (
         <>
-            <div className="flex md:flex-row md:justify-between md:items-center px-4 py-3 lg:shadow-md bg-white text-rose-400">
-
+            <div className="flex md:flex-row md:justify-between md:items-center px-4 py-3 lg:shadow-md bg-white text-blue-400">
                 <div className="flex items-center gap-2">
                     <img src={icon} alt="Logo" className="w-8 h-8" />
                     <h2 className="text-xl font-bold">Chatterly</h2>
@@ -97,7 +96,7 @@ const TopNav = () => {
                                 }
                             }}
                             onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-                            className="w-full px-3 py-1 text-black border border-orange-400 rounded-md focus:outline-none focus:border-red-500 shadow-sm"
+                            className="w-full px-3 py-1 text-black border border-blue-400 rounded-md focus:outline-none focus:border-red-500 shadow-sm"
                         />
                         {searchResult.length > 0 && (
                             <div className="absolute top-full left-0 mt-1 w-full max-h-64 overflow-y-auto bg-white rounded shadow-md border border-gray-200 z-50">
@@ -135,7 +134,7 @@ const TopNav = () => {
                             <div className="absolute right-0 mt-2 w-32 bg-white text-black rounded shadow-md z-50">
                                 <button
                                     onClick={handleLogout}
-                                    className="w-full text-left px-4 py-2 text-red-500 hover:bg-gray-100"
+                                    className="w-full text-left px-4 py-2 text-rose-500 hover:bg-gray-100"
                                 >
                                     Logout
                                 </button>

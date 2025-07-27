@@ -93,14 +93,14 @@ const GroupChatModal = ({ children }) => {
 
             {isOpen && (
                 <div className="fixed inset-0  backdrop-blur-lg flex items-center justify-center z-50">
-                    <div className="bg-blue-100 w-full max-w-md rounded-lg p-6 relative">
-                        <h2 className="text-xl font-bold text-orange-500 mb-4">Create Group Chat</h2>
+                    <div className="bg-orange-100 w-full max-w-md rounded-2xl p-6 relative">
+                        <h2 className="text-xl font-bold text-cyan-500 mb-4">Create Group Chat</h2>
                         <input
                             type="text"
                             placeholder="Group Name"
                             value={groupName}
                             onChange={(e) => setGroupName(e.target.value)}
-                            className="w-full p-2 mb-3 border border-orange-300 rounded focus:outline-none"
+                            className="w-full p-2 mb-3 border border-cyan-300 rounded focus:outline-none"
                         />
 
                         <input
@@ -108,14 +108,14 @@ const GroupChatModal = ({ children }) => {
                             placeholder="Add users..."
                             value={search}
                             onChange={(e) => handleSearch(e.target.value)}
-                            className="w-full p-2 mb-3 border border-orange-300 rounded focus:outline-none"
+                            className="w-full p-2 mb-3 border border-cyan-300 rounded focus:outline-none"
                         />
 
                         <div className="flex flex-wrap mb-3 gap-2">
                             {selectedUsers.map((u) => (
                                 <div
                                     key={u._id}
-                                    className="bg-orange-300 text-white px-2 py-1 rounded-full text-sm flex items-center gap-1"
+                                    className="bg-cyan-300 text-white px-2 py-1 rounded-full text-sm flex items-center gap-1"
                                 >
                                     {u.name}
                                     <button
@@ -135,7 +135,7 @@ const GroupChatModal = ({ children }) => {
                                 {searchResults.map((u) => (
                                     <div
                                         key={u._id}
-                                        className="px-2 py-1 hover:bg-orange-300 cursor-pointer text-sm border rounded-md mt-1"
+                                        className="px-2 py-1 hover:bg-cyan-300 cursor-pointer text-sm border rounded-md mt-1"
                                         onClick={() => handleAddUser(u)}
                                     >
                                         {u.name}
@@ -155,7 +155,7 @@ const GroupChatModal = ({ children }) => {
                             </button>
                             <button
                                 onClick={handleCreateGroup}
-                                className="bg-orange-500 text-white px-4 py-1 rounded hover:bg-orange-600"
+                                className="bg-cyan-500 text-white px-4 py-1 rounded hover:bg-cyan-600"
                             >
                                 Create
                             </button>

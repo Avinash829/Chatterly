@@ -55,13 +55,13 @@ const MsgSection = () => {
     };
 
     return !selectedChat ? (
-        <div className="flex flex-col justify-center items-center h-full">
+        <div className="flex flex-col justify-center items-center h-full text-blue-300">
             <img src={icon} alt="Logo" className="w-25" />
             <h2>Your Messages are end-to-end-encrypted</h2>
         </div>
     ) : (
         <div className="flex flex-col h-full">
-            <div className="flex items-center p-3 bg-orange-400 text-white shadow-sm">
+            <div className="flex items-center p-3 bg-blue-400 text-white shadow-sm">
                 <button onClick={() => setSelectedChat(null)}>
                     <FaArrowLeft className="text-lg" />
                 </button>
@@ -117,7 +117,7 @@ const MsgSection = () => {
                     className="flex-1 border rounded-md px-3 py-2 focus:outline-none"
                 />
                 <button
-                    className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600"
+                    className="px-4 py-2 bg-cyan-500 text-white rounded-md hover:bg-cyan-600"
                     onClick={sendMessage}
                 >
                     Send

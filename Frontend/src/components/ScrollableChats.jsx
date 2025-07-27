@@ -51,7 +51,7 @@ const ScrollableChats = ({ messages, setMessages }) => {
             ))}
 
             {messages.length === 0 && (
-                <p className="text-center text-gray-500">No messages yet.</p>
+                <p className="text-center text-blue-300">No messages yet.</p>
             )}
 
             <div ref={messagesEndRef}></div>

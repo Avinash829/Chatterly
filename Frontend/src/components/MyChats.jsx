@@ -26,9 +26,9 @@ const MyChats = () => {
     return (
         <div className="p-4 bg-white rounded-lg shadow-md mt-4">
             <div className="flex justify-between items-center mb-3">
-                <h2 className="text-lg font-bold text-orange-500">My Chats</h2>
+                <h2 className="text-lg font-bold text-cyan-500">My Chats</h2>
                 <GroupChatModal>
-                    <button className="px-3 py-1 rounded-md text-sm bg-orange-400 hover:bg-orange-500 text-white">
+                    <button className="px-3 py-1 rounded-md text-sm bg-cyan-400 hover:bg-cyan-500 text-white">
                         + New Group
                     </button>
                 </GroupChatModal>
@@ -38,18 +38,18 @@ const MyChats = () => {
                 chats.map((chat) => (
                     <div
                         key={chat._id}
-                        className="p-3 mb-2 bg-orange-100 rounded-md hover:bg-orange-200 cursor-pointer"
+                        className="p-3 mb-2 bg-cyan-100 rounded-md hover:bg-cyan-200 cursor-pointer"
                         onClick={() => setSelectedChat(chat)}
                     >
                         <div className="flex items-center gap-2">
                             {chat.isGroupChat ? (
                                 <>
-                                    <FaUsers className="text-orange-600" />
+                                    <FaUsers className="text-cyan-600" />
                                     <span>{chat.chatName}</span>
                                 </>
                             ) : (
                                 <>
-                                    <FaUser className="text-orange-600" />
+                                    <FaUser className="text-cyan-600" />
                                     <span>{getSender(user, chat.users)}</span>
                                 </>
                             )}

@@ -34,7 +34,7 @@ const GroupInfoModal = ({ chat, onClose, refresh }) => {
         <div className="fixed inset-0 backdrop-blur-lg flex items-center justify-center z-50">
             <div className="bg-white rounded-lg p-6 w-full max-w-md">
 
-                <h2 className="text-xl font-semibold mb-4 text-orange-500">Group Members</h2>
+                <h2 className="text-xl font-semibold mb-4 text-cyan-500">Group Members</h2>
                 <ul className="space-y-2 text-amber-400">
                     {chat.users.map((u) => (
                         <li key={u._id} className="flex justify-between items-center">
@@ -42,7 +42,7 @@ const GroupInfoModal = ({ chat, onClose, refresh }) => {
                             {isAdmin && u._id !== user._id && (
                                 <button
                                     onClick={() => handleRemoveUser(u._id)}
-                                    className="text-sm bg-orange-400 text-white px-2 py-1 rounded hover:bg-green-400"
+                                    className="text-sm bg-cyan-400 text-white px-2 py-1 rounded hover:bg-green-400"
                                 >
                                     Remove
                                 </button>
@@ -70,7 +70,7 @@ const GroupInfoModal = ({ chat, onClose, refresh }) => {
                             />
                             <button
                                 onClick={handleAddUser}
-                                className="px-4 py-2 bg-orange-400 text-white rounded hover:bg-green-500"
+                                className="px-4 py-2 bg-cyan-400 text-white rounded hover:bg-green-500"
                             >
                                 Add Member
                             </button> */}
@@ -78,7 +78,7 @@ const GroupInfoModal = ({ chat, onClose, refresh }) => {
                     ) : (
                         <button
                             onClick={() => handleRemoveUser(user._id)}
-                            className="px-4 py-2 bg-orange-400 text-white rounded hover:bg-green-500"
+                            className="px-4 py-2 bg-cyan-400 text-white rounded hover:bg-green-500"
                         >
                             Leave Group
                         </button>
