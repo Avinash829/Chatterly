@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import axios from "axios";
 import { ChatState } from "../context/chatProvider";
 import socket from "../socket";
-import SingleChat from "./singleChat";
+import SingleChat from "./SingleChat";
 
 let selectedChatCompare = null;
 
