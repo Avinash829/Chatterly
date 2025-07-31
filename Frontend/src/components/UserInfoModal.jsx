@@ -1,27 +1,32 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { ChatState } from "../context/chatProvider";
+import { toast } from "react-toastify";
 
 const UserInfoModal = ({ userId, onClose }) => {
     const [commonGroups, setCommonGroups] = useState([]);
     const [loading, setLoading] = useState(true);
-    const { chats, user } = ChatState();
+    const { chats } = ChatState();
 
     useEffect(() => {
-        if (!userId || !chats) return;
+        try {
+            if (!userId || !chats) return;
 
-        const groups = chats.filter(
-            (chat) =>
-                chat.isGroupChat &&
-                chat.users.some((u) => u._id === userId)
-        );
+            const groups = chats.filter(
+                (chat) =>
+                    chat.isGroupChat &&
+                    chat.users.some((u) => u._id === userId)
+            );
 
-        setCommonGroups(groups);
-        setLoading(false);
+            setCommonGroups(groups);
+        } catch (err) {
+            toast.error("Failed to fetch common groups");
+        } finally {
+            setLoading(false);
+        }
     }, [userId, chats]);
 
     return (
-        <div className="fixed inset-0  backdrop-blur-lg flex items-center justify-center z-50">
+        <div className="fixed inset-0 backdrop-blur-lg flex items-center justify-center z-50">
             <div className="bg-white p-5 rounded-md w-80 shadow-lg">
                 <h2 className="text-lg font-bold mb-4 text-orange-500">Groups in Common</h2>
 

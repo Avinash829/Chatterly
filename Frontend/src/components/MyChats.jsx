@@ -16,7 +16,7 @@ const MyChats = () => {
     const fetchChats = async () => {
         try {
             const config = { headers: { Authorization: `Bearer ${user.token}` } };
-            const { data } = await axios.get("/api/chats", config);
+            const { data } = await axios.get(`${import.meta.env.VITE_API_URL}/api/chats`, config);
             setChats(data);
         } catch (err) {
             alert("Failed to load chats");

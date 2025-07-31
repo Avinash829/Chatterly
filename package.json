@@ -5,9 +5,10 @@
     "license": "ISC",
     "author": "avinash",
     "type": "commonjs",
-    "main": "server.js",
+    "main": "backend/server.js",
     "scripts": {
-        "start": "nodemon backend/server.js"
+        "start": "node backend/server.js",
+        "dev": "nodemon backend/server.js"
     },
     "dependencies": {
         "bcryptjs": "^3.0.2",

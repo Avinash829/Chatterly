@@ -41,10 +41,11 @@ const MsgSection = () => {
                 },
             };
             const { data } = await axios.post(
-                "/api/message",
+                `${import.meta.env.VITE_API_URL}/api/message`,
                 { content: newMessage, chatId: selectedChat._id },
                 config
             );
+
             socket.emit("new message", data);
             setMessages((prev) => [...prev, data]);
             setNewMessage("");

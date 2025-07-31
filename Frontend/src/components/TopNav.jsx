@@ -4,6 +4,7 @@ import { ChatState } from "../context/chatProvider";
 import { FaChevronDown } from "react-icons/fa";
 import icon from "../assets/icon.png";
 import axios from "axios";
+import { toast } from "react-hot-toast";
 
 const TopNav = () => {
     const { user, setUser, setSelectedChat, chats, setChats } = ChatState();
@@ -24,7 +25,7 @@ const TopNav = () => {
     const handleSearch = async () => {
         if (!search.trim()) {
             setSearchResult([]);
-            alert("Please enter something to search.");
+            toast.error("Please enter something to search.");
             return;
         }
 
@@ -37,7 +38,7 @@ const TopNav = () => {
             };
 
             const { data } = await axios.get(
-                `http://localhost:5000/api/user?search=${search}`,
+                `${import.meta.env.VITE_API_URL}/api/user?search=${search}`,
                 config
             );
 
@@ -46,7 +47,7 @@ const TopNav = () => {
         } catch (error) {
             console.error("Search error:", error);
             setLoading(false);
-            alert("Failed to fetch search results.");
+            toast.error("Failed to fetch search results.");
         }
     };
 
@@ -60,7 +61,7 @@ const TopNav = () => {
                 },
             };
 
-            const { data } = await axios.post("/api/chats", { userId }, config);
+            const { data } = await axios.post(`${import.meta.env.VITE_API_URL}/api/chats`, { userId }, config);
 
             if (!chats?.find((c) => c._id === data._id)) {
                 setChats([data, ...(chats || [])]);
@@ -69,7 +70,7 @@ const TopNav = () => {
             setSelectedChat(data);
             setLoadingChat(false);
         } catch (error) {
-            alert("Error fetching the chats");
+            toast.error("Error fetching the chats");
         }
     };
 

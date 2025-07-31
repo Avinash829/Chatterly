@@ -9,10 +9,17 @@ const ChatProvider = ({ children }) => {
     const [loadingUser, setLoadingUser] = useState(true);
 
     useEffect(() => {
-        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        setUser(userInfo);
-        setLoadingUser(false);
+        try {
+            const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+            setUser(userInfo);
+        } catch (error) {
+            console.error("Error parsing userInfo from localStorage:", error);
+            setUser(null);
+        } finally {
+            setLoadingUser(false);
+        }
     }, []);
+
 
     return (
         <ChatContext.Provider value={{ user, setUser, loadingUser, selectedChat, setSelectedChat, chats, setChats }}>

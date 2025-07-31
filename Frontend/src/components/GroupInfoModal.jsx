@@ -15,10 +15,11 @@ const GroupInfoModal = ({ chat, onClose, refresh }) => {
                 headers: { Authorization: `Bearer ${user.token}` },
             };
 
-            const { data } = await axios.put("/api/chats/groupremove", {
+            const { data } = await axios.put(`${import.meta.env.VITE_API_URL}/api/chats/groupremove`, {
                 chatId: chat._id,
                 userId,
             }, config);
+
 
             refresh(data);
             if (userId === user._id) {

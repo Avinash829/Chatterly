@@ -1,5 +1,4 @@
 const express = require("express");
-const { chats } = require("./data/data");
 const dotenv = require("dotenv");
 const cors = require("cors");
 const connectDB = require("./config/db");
@@ -15,7 +14,11 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+
+app.use(cors({
+    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    credentials: true
+}));
 
 app.get("/", (req, res) => {
     res.send("Response from API");
@@ -29,15 +32,15 @@ app.use(notFound);
 app.use(errorHandler);
 
 const PORT = process.env.PORT || 5000;
-const server = app.listen(PORT, () => console.log(`server started on ${PORT}`));
+const server = app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 
 const io = require("socket.io")(server, {
     pingTimeout: 60000,
     cors: {
-        origin: "http://localhost:5173",
-    },
+        origin: process.env.FRONTEND_URL || "http://localhost:5173",
+        credentials: true
+    }
 });
-
 
 io.on("connection", (socket) => {
     console.log("⚡️ New client connected");
@@ -62,6 +65,6 @@ io.on("connection", (socket) => {
     });
 
     socket.on("disconnect", () => {
-        console.log("Client disconnected");
+        console.log("⚠️ Client disconnected");
     });
 });

@@ -1,6 +1,8 @@
 import { io } from "socket.io-client";
 
-const ENDPOINT = "http://localhost:5000";
-const socket = io(ENDPOINT, { transports: ["websocket"] });
+const ENDPOINT = import.meta.env.VITE_API_URL;
+const socket = io(ENDPOINT, {
+    transports: ["websocket"],
+});
 
 export default socket;

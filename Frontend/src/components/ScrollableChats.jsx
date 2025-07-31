@@ -11,14 +11,20 @@ const ScrollableChats = ({ messages, setMessages }) => {
     const messagesEndRef = useRef(null);
 
     const fetchMessages = async () => {
+        if (!selectedChat?._id) return;
+
         try {
             const config = {
-                headers: { Authorization: `Bearer ${user.token}` },
+                headers: {
+                    Authorization: `Bearer ${user.token}`,
+                },
             };
+
             const { data } = await axios.get(
-                `/api/message/${selectedChat._id}`,
+                `${import.meta.env.VITE_API_URL}/api/message/${selectedChat._id}`,
                 config
             );
+
             setMessages(data);
         } catch (err) {
             console.error("Error fetching messages:", err);
@@ -33,11 +39,16 @@ const ScrollableChats = ({ messages, setMessages }) => {
     }, [selectedChat]);
 
     useEffect(() => {
-        socket.on("message received", (newMessage) => {
+        const handleNewMessage = (newMessage) => {
+            // Optional: You can check here if message belongs to selected chat
             setMessages((prev) => [...prev, newMessage]);
-        });
+        };
 
-        return () => socket.off("message received");
+        socket.on("message received", handleNewMessage);
+
+        return () => {
+            socket.off("message received", handleNewMessage);
+        };
     }, []);
 
     useEffect(() => {

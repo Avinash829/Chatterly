@@ -7,13 +7,12 @@ const SingleChat = ({ message, chat }) => {
     const isGroupChat = chat?.isGroupChat;
 
     const bubbleClass = isOwnMessage
-        ? "rounded-t-3xl rounded-bl-3xl"
-        : "rounded-t-3xl rounded-br-3xl";
+        ? "rounded-t-3xl rounded-bl-3xl bg-cyan-400 text-white"
+        : "rounded-t-3xl rounded-br-3xl bg-gray-200 text-black";
 
     return (
         <div
-            className={`flex flex-col  ${isOwnMessage ? "items-end" : "items-start"
-                } mb-2`}
+            className={`flex flex-col ${isOwnMessage ? "items-end" : "items-start"} mb-2`}
         >
             {!isOwnMessage && isGroupChat && (
                 <span className="text-xs text-gray-500 pl-2 mb-0.5">
@@ -21,8 +20,7 @@ const SingleChat = ({ message, chat }) => {
                 </span>
             )}
             <div
-                className={`px-4 py-2 max-w-xs ${bubbleClass} ${isOwnMessage ? "bg-cyan-400 text-white" : "bg-gray-200 text-black"
-                    }`}
+                className={`px-4 py-2 max-w-[75%] break-words ${bubbleClass}`}
             >
                 {message.content}
             </div>

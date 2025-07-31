@@ -6,9 +6,9 @@ const { encrypt, decrypt } = require("../utils/encrypt");
 
 const sendMessage = expressAsyncHandler(async (req, res) => {
     const { content, chatId } = req.body;
+
     if (!content || !chatId) {
-        console.log("Invalid data passed into req");
-        return res.sendStatus(400);
+        return res.status(400).json({ message: "Content and chatId are required." });
     }
 
     const newMessage = {
@@ -28,15 +28,13 @@ const sendMessage = expressAsyncHandler(async (req, res) => {
             select: "name email",
         });
 
-        await Chat.findByIdAndUpdate(chatId, {
-            latestMessage: message,
-        });
+        await Chat.findByIdAndUpdate(chatId, { latestMessage: message });
 
         message.content = decrypt(message.content);
-        res.json(message);
+        res.status(200).json(message);
     } catch (error) {
         res.status(400);
-        throw new Error(error.message);
+        throw new Error("Failed to send message: " + error.message);
     }
 });
 
@@ -46,17 +44,15 @@ const allMessages = expressAsyncHandler(async (req, res) => {
             .populate("sender", "name email")
             .populate("chat");
 
-        const decryptedMessages = messages.map((msg) => {
-            return {
-                ...msg.toObject(),
-                content: msg.isEncrypted ? decrypt(msg.content) : msg.content,
-            };
-        });
+        const decryptedMessages = messages.map((msg) => ({
+            ...msg.toObject(),
+            content: msg.isEncrypted ? decrypt(msg.content) : msg.content,
+        }));
 
-        res.json(decryptedMessages);
+        res.status(200).json(decryptedMessages);
     } catch (error) {
         res.status(400);
-        throw new Error(error.message);
+        throw new Error("Failed to fetch messages: " + error.message);
     }
 });
 
