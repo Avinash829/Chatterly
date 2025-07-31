@@ -44,6 +44,7 @@ const Login = () => {
                     headers: {
                         "Content-Type": "application/json",
                     },
+                    credentials: "include",
                     body: JSON.stringify({
                         email: formData.email,
                         password: formData.password,
@@ -92,6 +93,7 @@ const Login = () => {
                     headers: {
                         "Content-Type": "application/json",
                     },
+                    credentials: "include",
                     body: JSON.stringify({
                         name: formData.fullName,
                         email: formData.email,
