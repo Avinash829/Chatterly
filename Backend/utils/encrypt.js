@@ -1,6 +1,8 @@
+require("dotenv").config();
 const crypto = require("crypto");
 
 const SECRET_KEY = process.env.MSG_SECRET_KEY;
+// console.log("Loaded MSG_SECRET_KEY:", process.env.MSG_SECRET_KEY);
 
 if (!SECRET_KEY || SECRET_KEY.length !== 32) {
     throw new Error("❌ MSG_SECRET_KEY must be a 32-byte string in the .env file.");
